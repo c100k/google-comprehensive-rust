@@ -78,4 +78,18 @@ fn main() {
         println!("{ref_x}");
     }
     // println!("ref_x: {ref_x}"); // borrow later used here
+
+    // 6.4 : https://google.github.io/comprehensive-rust/basic-syntax/slices.html
+    let slices_arr: [i8; 6] = [1, 2, 3, 4, 5, 6];
+    println!("{:?}", slices_arr);
+    let slices_s0: &[i8] = &slices_arr[2..4];
+    println!("{:?}", slices_s0);
+    let slices_s1: &[i8] = &slices_arr[..2];
+    println!("{:?}", slices_s1);
+    let slices_s2: &[i8] = &slices_arr[3..];
+    println!("{:?}", slices_s2);
+    let slices_s3: &[i8] = &slices_arr[..];
+    println!("{:?}", slices_s3);
+    // slices_arr[3] = 9;
+    // println!("{:?}", slices_arr); // cannot assign - help: consider changing this to be mutable: `mut slices_arr`
 }
