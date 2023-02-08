@@ -69,4 +69,13 @@ fn main() {
     println!("{vrefval}");
     // let vref_ref_count = vref_ref.count_ones(); // Causes all the usages of above to trigger : immutable borrow occurs here
     // println!("{vref_ref_count}");
+
+    // 6.3.1 : https://google.github.io/comprehensive-rust/basic-syntax/references-dangling.html
+    let ref_x: &i32;
+    {
+        let x: i32 = 10;
+        ref_x = &x; // borrowed value does not live long enough
+        println!("{ref_x}");
+    }
+    // println!("ref_x: {ref_x}"); // borrow later used here
 }
