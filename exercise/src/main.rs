@@ -56,4 +56,17 @@ fn main() {
     // It is used to indicate, for example, that a function or expression has no return value, as we’ll see in a future slide.
     // You can think of it as void that can be familiar to you from other programming languages.
     println!("{:?}", ());
+
+    // 6.3 : https://google.github.io/comprehensive-rust/basic-syntax/references.html
+    let mut vrefval: i32 = 10;
+    println!("{vrefval}");
+    // let vref_ref: &mut i8 = &mut vrefval; // expected `i8`, found `i32`
+    let vref_ref: &mut i32 = &mut vrefval;
+    *vref_ref = 20;
+    // println!("{vref_ref}: {vrefval}"); // immutable borrow occurs here
+    println!("{vrefval}");
+    vrefval = 30;
+    println!("{vrefval}");
+    // let vref_ref_count = vref_ref.count_ones(); // Causes all the usages of above to trigger : immutable borrow occurs here
+    // println!("{vref_ref_count}");
 }
