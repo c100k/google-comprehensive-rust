@@ -37,4 +37,23 @@ fn main() {
     let vtrue: bool = true;
     let vfalse: bool = false;
     println!("{vtrue} - {vfalse}");
+
+    // 6.2 : https://google.github.io/comprehensive-rust/basic-syntax/compound-types.html
+    let mut arr: [i8; 3] = [1, 2, 3]; // [1, 2, 3, 4] => expected an array with a fixed size of 3 elements, found one with 4 elements
+                                      // [1, 2, "toto"] => expected `i8`, found `&str`
+    println!("{:?}", arr);
+    arr[0] = 9;
+    println!("{:?}", arr);
+    println!("{:#?}", arr); // # adds pretty-print
+    let tup: (&str, i8, bool) = ("Toto", 26, true); // ("Toto", 26, true, 15) => expected a tuple with 3 elements, found one with 4 elements
+                                                    // ("Toto", 26, "true") => expected `bool`, found `&str`
+    println!("{:?}", tup);
+    println!("{:#?}", tup);
+    println!("{}", tup.0);
+    println!("{} / {}", tup.1, tup.2);
+    // println!("{}", tup.3); // no field `3` on type `(&str, i8, bool)`
+    // The empty tuple () is also known as the “unit type”. It is both a type, and the only valid value of that type - that is to say both the type and its value are expressed as ().
+    // It is used to indicate, for example, that a function or expression has no return value, as we’ll see in a future slide.
+    // You can think of it as void that can be familiar to you from other programming languages.
+    println!("{:?}", ());
 }
